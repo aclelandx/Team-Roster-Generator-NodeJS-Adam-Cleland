@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  },
+  "name": "team-roster-generator-nodejs-adam-cleland",
+  "description": "We are tasked with creating a node.js command line application that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person.  This assignment is part of the OSU full-stack coding boot camp.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aclelandx/Team-Roster-Generator-NodeJS-Adam-Cleland.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aclelandx/Team-Roster-Generator-NodeJS-Adam-Cleland/issues"
+  },
+  "homepage": "https://github.com/aclelandx/Team-Roster-Generator-NodeJS-Adam-Cleland#readme"
+}
