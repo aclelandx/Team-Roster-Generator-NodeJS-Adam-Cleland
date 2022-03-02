@@ -49,4 +49,19 @@ function employeeRank() {
 
 // makePage();
 
-console.log(newTeam);
+// Test code to make sure my targeting is put in proper
+
+let testMAN = new Manager(`testName`, `testID`, `TestEmail`, `office : 556`);
+newTeam.addTeamMember(testMAN);
+let testENG = new Engineer(`testName`, `testID`, `TestEmail`, `github username`);
+newTeam.addTeamMember(testENG);
+console.log(newTeam.masterArray);
+let testINT = new Intern(`testName`, `testID`, `TestEmail`, `schoolBoy`);
+newTeam.addTeamMember(testINT);
+
+// console.log(newTeam);
+
+
+console.log(newTeam.masterArray);
+
+
