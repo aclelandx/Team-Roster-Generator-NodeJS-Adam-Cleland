@@ -1,48 +1,50 @@
+// imports the Employee Class from the /lib folder.
+
 const Employee = require("../lib/Employee");
 
-test("Can instantiate Employee instance", () => {
-  const e = new Employee();
-  expect(typeof(e)).toBe("object");
+test("Able to create a new Employee instance", () => {
+  const t = new Employee();
+  expect(typeof (t)).toBe("object");
 });
 
-test("Can set name via constructor arguments", () => {
-  const name = "Alice";
-  const e = new Employee(name);
-  expect(e.name).toBe(name);
+test("Able to assign the name through constructor F", () => {
+  const testName = "Cleland";
+  const t = new Employee(testName);
+  expect(t.name).toBe(testName);
 });
 
-test("Can set id via constructor argument", () => {
+test("Able to assign the id through constructor F", () => {
   const testValue = 100;
-  const e = new Employee("Foo", testValue);
-  expect(e.id).toBe(testValue);
+  const t = new Employee("Cleland", testValue);
+  expect(t.id).toBe(testValue);
 });
 
-test("Can set email via constructor argument", () => {
-  const testValue = "test@test.com";
-  const e = new Employee("Foo", 1, testValue);
-  expect(e.email).toBe(testValue);
+test("Able to assign the email through constructor F", () => {
+  const testEmail = "test@gmail.com";
+  const t = new Employee("Cleland", 1, testEmail);
+  expect(t.email).toBe(testEmail);
 });
 
-test("Can get name via getName()", () => {
-  const testValue = "Alice";
-  const e = new Employee(testValue);
-  expect(e.getName()).toBe(testValue);
+test("Can access information from grabEmployeeName()", () => {
+  const testName = "Cleland";
+  const t = new Employee(testName);
+  expect(t.grabEmployeeName()).toBe(testName);
 });
 
-test("Can get id via getId()", () => {
-  const testValue = 100;
-  const e = new Employee("Foo", testValue);
-  expect(e.getId()).toBe(testValue);
+test("Can access information from grabEmployeeId()", () => {
+  const testId = 100;
+  const t = new Employee("Cleland", testId);
+  expect(t.grabEmployeeId()).toBe(testId);
 });
 
-test("Can get email via getEmail()", () => {
-  const testValue = "test@test.com";
-  const e = new Employee("Foo", 1, testValue);
-  expect(e.getEmail()).toBe(testValue);
+test("Can access information from grabEmployeeEmail()", () => {
+  const testEmail = "test@gmail.com";
+  const t = new Employee("Cleland", 1, testEmail);
+  expect(t.grabEmployeeEmail()).toBe(testEmail);
 });
 
-test("getRole() should return \"Employee\"", () => {
-  const testValue = "Employee";
-  const e = new Employee("Alice", 1, "test@test.com");
-  expect(e.getRole()).toBe(testValue);
+test(" The default role \"Employee\"", () => {
+  const roleCheck = "Employee";
+  const t = new Employee("Cleland", 1, "test@gmail.com");
+  expect(t.grabEmployeeRole()).toBe(roleCheck);
 });
