@@ -1,19 +1,19 @@
 const Intern = require("../lib/Intern");
 
-test("Can set school via constructor", () => {
-  const testSchool = "UCLA";
-  const t = new Intern("Foo", 1, "test@test.com", testSchool);
+test("Able to set School from the Constructor", () => {
+  const testSchool = "OSU Coding Boot Camp";
+  const t = new Intern("Cleland", 1, "test@gmail.com", testSchool);
   expect(t.school).toBe(testSchool);
 });
 
-test("getRole() should return \"Intern\"", () => {
+test("Able to get the role from the grabEmployeeRole method", () => {
   const internRoleCheck = "Intern";
-  const t = new Intern("Foo", 1, "test@test.com", "UCLA");
+  const t = new Intern("Cleland", 1, "test@gmail.com", "OSU Coding Boot Camp");
   expect(t.grabEmployeeRole()).toBe(internRoleCheck);
 });
 
-test("Can get school via getSchool()", () => {
-  const testSchool = "UCLA";
-  const t = new Intern("Foo", 1, "test@test.com", testSchool);
+test("Able to get the school from the grabSchool method", () => {
+  const testSchool = "OSU Coding Boot Camp";
+  const t = new Intern("Cleland", 1, "test@gmail.com", testSchool);
   expect(t.grabSchool()).toBe(testSchool);
 });
