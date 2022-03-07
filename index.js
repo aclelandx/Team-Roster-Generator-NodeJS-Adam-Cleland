@@ -15,7 +15,7 @@ function makePage() {
             default: true,
         }
     ]).then((userInput) => {
-        userInput.createNewMember ? employeeRank() : console.log(newTeam.masterArray);
+        userInput.createNewMember ? employeeRank() : newTeam.createPage();
     })
 }
 
