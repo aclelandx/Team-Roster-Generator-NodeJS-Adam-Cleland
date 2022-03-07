@@ -1,11 +1,13 @@
+// imports all the required packages and classes for this application to run properly
 const inquirer = require(`inquirer`);
 const Manager = require(`./lib/Manager`);
 const Engineer = require(`./lib/Engineer`);
 const Intern = require(`./lib/Intern`);
 const teamListCreation = require(`./lib/teamListCreation`);
-
+// creates a new instance of the teamListCreation Class. This is what holds the functionality for the application; along with storing the employees that have been added.
 const newTeam = new teamListCreation();
-
+// Function that begins the whole program, It will ask you if you would like to add an employee to your roster
+// when No is selected, the create page method is ran and the HTML page is generated with all the information provided.
 function makePage() {
     inquirer.prompt([
         {
@@ -18,7 +20,7 @@ function makePage() {
         userInput.createNewMember ? employeeRank() : newTeam.createPage();
     })
 }
-
+// works as a sorter based on what kind of employee is being added to the team, directs the code to the proper class type, then runs the required methods for grabbing and setting information.
 async function employeeRank() {
     const userInput = await inquirer.prompt([
         {
@@ -46,9 +48,10 @@ async function employeeRank() {
             break;
         default: console.error(`Something went wrong with your selection, please try again.`);
     }
+    // When all of the information has been gathered, then the newTeamMember is added into the masterArray inside of the newTeam object.
     newTeam.addTeamMember(newTeamMember);
     makePage();
 }
-
+// starts the application off.
 makePage();
 
