@@ -2,7 +2,7 @@ const inquirer = require(`inquirer`);
 const Manager = require(`./lib/Manager`);
 const Engineer = require(`./lib/Engineer`);
 const Intern = require(`./lib/Intern`);
-const teamListCreation = require(`./lib/teamListCreation`)
+const teamListCreation = require(`./lib/teamListCreation`);
 
 const newTeam = new teamListCreation();
 
@@ -15,53 +15,40 @@ function makePage() {
             default: true,
         }
     ]).then((userInput) => {
-        userInput.createNewMember ? employeeRank() : console.log(`You have chosen to not add any more employee's`);
+        userInput.createNewMember ? employeeRank() : console.log(newTeam.masterArray);
     })
 }
 
-function employeeRank() {
-    inquirer.prompt([
+async function employeeRank() {
+    const userInput = await inquirer.prompt([
         {
             type: `list`,
             message: `What Job level is this individual?`,
             name: `newEmployeeRole`,
             choices: [`Manager`, `Engineer`, `Intern`],
-        }
-    ]).then((userInput) => {
-        switch (userInput.newEmployeeRole) {
-            case `Manager`:
-                let newManager = new Manager;
-                newManager.getBasicInfo();
-                break;
-            case `Engineer`:
-                let newEngineer = new Engineer;
-                newEngineer.getBasicInfo();
-
-                break;
-            case `Intern`:
-                let newIntern = new Intern;
-                newIntern.getBasicInfo();
-                break;
-            default: makePage();
-        }
-    })
+        }]);
+    let newTeamMember;
+    switch (userInput.newEmployeeRole) {
+        case `Manager`:
+            newTeamMember = new Manager();
+            await newTeamMember.getBasicInfo();
+            await newTeamMember.getOfficeNumber();
+            break;
+        case `Engineer`:
+            newTeamMember = new Engineer();
+            await newTeamMember.getBasicInfo();
+            await newTeamMember.getGithub();
+            break;
+        case `Intern`:
+            newTeamMember = new Intern();
+            await newTeamMember.getBasicInfo();
+            await newTeamMember.getSchool();
+            break;
+        default: console.error(`Something went wrong with your selection, please try again.`);
+    }
+    newTeam.addTeamMember(newTeamMember);
+    makePage();
 }
 
-// makePage();
-
-// Test code to make sure my targeting is put in proper
-
-let testMAN = new Manager(`testName`, `testID`, `TestEmail`, `office : 556`);
-newTeam.addTeamMember(testMAN);
-let testENG = new Engineer(`testName`, `testID`, `TestEmail`, `github username`);
-newTeam.addTeamMember(testENG);
-console.log(newTeam.masterArray);
-let testINT = new Intern(`testName`, `testID`, `TestEmail`, `schoolBoy`);
-newTeam.addTeamMember(testINT);
-
-// console.log(newTeam);
-
-
-console.log(newTeam.masterArray);
-
+makePage();
 
